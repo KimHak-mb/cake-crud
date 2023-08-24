@@ -33,7 +33,7 @@ class BlogPostsController extends AppController
     public function view($id = null)
     {
         $blogPost = $this->BlogPosts->get($id, [
-            'contain' => ['Categories'],
+            'contain' => ['Categories', 'MetaFields'],
         ]);
 
         $this->set(compact('blogPost'));
@@ -48,7 +48,11 @@ class BlogPostsController extends AppController
     {
         $blogPost = $this->BlogPosts->newEmptyEntity();
         if ($this->request->is('post')) {
-            $blogPost = $this->BlogPosts->patchEntity($blogPost, $this->request->getData());
+            $blogPost = $this->BlogPosts->patchEntity($blogPost, $this->request->getData(), [
+                'associated' => [
+                    'MetaFields' => ['validate' => 'addBlogPosts']
+                ]
+            ]);
             if ($this->BlogPosts->save($blogPost)) {
                 $this->Flash->success(__('The blog post has been saved.'));
 

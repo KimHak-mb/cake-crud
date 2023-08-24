@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\BlogPostsController;
+use App\Controller\MetaFieldsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\BlogPostsController Test Case
+ * App\Controller\MetaFieldsController Test Case
  *
- * @uses \App\Controller\BlogPostsController
+ * @uses \App\Controller\MetaFieldsController
  */
-class BlogPostsControllerTest extends TestCase
+class MetaFieldsControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,17 +22,15 @@ class BlogPostsControllerTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.BlogPosts',
         'app.MetaFields',
-        'app.Categories',
-        'app.BlogPostsCategories',
+        'app.BlogPosts',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\BlogPostsController::index()
+     * @uses \App\Controller\MetaFieldsController::index()
      */
     public function testIndex(): void
     {
@@ -43,7 +41,7 @@ class BlogPostsControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\BlogPostsController::view()
+     * @uses \App\Controller\MetaFieldsController::view()
      */
     public function testView(): void
     {
@@ -54,7 +52,7 @@ class BlogPostsControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\BlogPostsController::add()
+     * @uses \App\Controller\MetaFieldsController::add()
      */
     public function testAdd(): void
     {
@@ -65,7 +63,7 @@ class BlogPostsControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\BlogPostsController::edit()
+     * @uses \App\Controller\MetaFieldsController::edit()
      */
     public function testEdit(): void
     {
@@ -76,7 +74,7 @@ class BlogPostsControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\BlogPostsController::delete()
+     * @uses \App\Controller\MetaFieldsController::delete()
      */
     public function testDelete(): void
     {

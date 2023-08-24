@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\BlogPostsTable;
+use App\Model\Table\MetaFieldsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\BlogPostsTable Test Case
+ * App\Model\Table\MetaFieldsTable Test Case
  */
-class BlogPostsTableTest extends TestCase
+class MetaFieldsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\BlogPostsTable
+     * @var \App\Model\Table\MetaFieldsTable
      */
-    protected $BlogPosts;
+    protected $MetaFields;
 
     /**
      * Fixtures
@@ -24,9 +24,8 @@ class BlogPostsTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.BlogPosts',
         'app.MetaFields',
-        'app.Categories',
+        'app.BlogPosts',
     ];
 
     /**
@@ -37,8 +36,8 @@ class BlogPostsTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('BlogPosts') ? [] : ['className' => BlogPostsTable::class];
-        $this->BlogPosts = $this->getTableLocator()->get('BlogPosts', $config);
+        $config = $this->getTableLocator()->exists('MetaFields') ? [] : ['className' => MetaFieldsTable::class];
+        $this->MetaFields = $this->getTableLocator()->get('MetaFields', $config);
     }
 
     /**
@@ -48,7 +47,7 @@ class BlogPostsTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->BlogPosts);
+        unset($this->MetaFields);
 
         parent::tearDown();
     }
@@ -57,9 +56,20 @@ class BlogPostsTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\BlogPostsTable::validationDefault()
+     * @uses \App\Model\Table\MetaFieldsTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\MetaFieldsTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

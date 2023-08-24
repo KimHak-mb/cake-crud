@@ -64,6 +64,39 @@
                 </div>
                 <?php endif; ?>
             </div>
+            <div class="related">
+                <h4><?= __('Related Meta Fields') ?></h4>
+                <?php if (!empty($blogPost->meta_fields)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Meta Key') ?></th>
+                            <th><?= __('Meta Value') ?></th>
+                            <th><?= __('Blog Post Id') ?></th>
+                            <th><?= __('Created') ?></th>
+                            <th><?= __('Modified') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($blogPost->meta_fields as $metaFields) : ?>
+                        <tr>
+                            <td><?= h($metaFields->id) ?></td>
+                            <td><?= h($metaFields->meta_key) ?></td>
+                            <td><?= h($metaFields->meta_value) ?></td>
+                            <td><?= h($metaFields->blog_post_id) ?></td>
+                            <td><?= h($metaFields->created) ?></td>
+                            <td><?= h($metaFields->modified) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'MetaFields', 'action' => 'view', $metaFields->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'MetaFields', 'action' => 'edit', $metaFields->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'MetaFields', 'action' => 'delete', $metaFields->id], ['confirm' => __('Are you sure you want to delete # {0}?', $metaFields->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>

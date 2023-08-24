@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * BlogPosts Model
  *
+ * @property \App\Model\Table\MetaFieldsTable&\Cake\ORM\Association\HasMany $MetaFields
  * @property \App\Model\Table\CategoriesTable&\Cake\ORM\Association\BelongsToMany $Categories
  *
  * @method \App\Model\Entity\BlogPost newEmptyEntity()
@@ -47,6 +48,9 @@ class BlogPostsTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('MetaFields', [
+            'foreignKey' => 'blog_post_id',
+        ]);
         $this->belongsToMany('Categories', [
             'foreignKey' => 'blog_post_id',
             'targetForeignKey' => 'category_id',
