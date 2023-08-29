@@ -43,6 +43,7 @@
                         <tr>
                             <th><?= __('Id') ?></th>
                             <th><?= __('Name') ?></th>
+                            <th><?= __('Meta Fields') ?></th>
                             <th><?= __('Created') ?></th>
                             <th><?= __('Modified') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
@@ -51,6 +52,15 @@
                         <tr>
                             <td><?= h($blogPosts->id) ?></td>
                             <td><?= h($blogPosts->name) ?></td>
+                            <td>
+                                <?php if ($blogPosts->meta_fields): ?>
+                                    <ul>
+                                        <?php foreach($blogPosts->meta_fields as $meta_field) : ?>
+                                            <li><?= $meta_field->meta_key ?>: <?= $meta_field->meta_value ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </td>
                             <td><?= h($blogPosts->created) ?></td>
                             <td><?= h($blogPosts->modified) ?></td>
                             <td class="actions">
