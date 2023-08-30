@@ -6,7 +6,7 @@
 ?>
 <div class="metaFields index content">
     <?= $this->Html->link(__('New Meta Field'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Meta Fields') ?></h3>
+    <h1><?= __('Meta Fields') ?></h1>
     <div class="table-responsive">
         <table>
             <thead>
