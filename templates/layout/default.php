@@ -97,7 +97,7 @@
                     <?php echo $this->Html->Link('Blog Posts', ['controller' => 'Blog_posts','action' => 'index']); ?>
                     <?php echo $this->Html->Link('Meta Fields', ['controller' => 'Meta_fields','action' => 'index']); ?>
                     <a href="/login">Login</a>
-                    <a href="/register">Register</a>
+                    <?php echo $this->Html->Link('Register', ['controller' => 'Users','action' => 'add']); ?>
                 </div>
             </div>
         </nav>
