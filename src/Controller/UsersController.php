@@ -11,13 +11,13 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
-    // public function beforeFilter(\Cake\Event\EventInterface $event)
-    // {
-    //     parent::beforeFilter($event);
-    //     // Configure the login action to not require authentication, preventing
-    //     // the infinite redirect loop issue
-    //     $this->Authentication->addUnauthenticatedActions(['login']);
-    // }
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Configure the login action to not require authentication, preventing
+        // the infinite redirect loop issue
+        $this->Authentication->addUnauthenticatedActions(['login','register']);
+    }
 
     public function login()
     {
@@ -27,7 +27,7 @@ class UsersController extends AppController
         if ($result && $result->isValid()) {
             // redirect to /articles after login success
             $redirect = $this->request->getQuery('redirect', [
-                'controller' => 'Users',
+                'controller' => 'Categories',
                 'action' => 'index',
             ]);
 
@@ -83,6 +83,26 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
+    {
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        }
+        $this->set(compact('user'));
+    }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function register()
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {

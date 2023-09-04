@@ -93,11 +93,11 @@
 
                 <div class="top-nav-links">
                     <?php echo $this->Html->Link('Home', ['controller' => 'Pages','action' => 'home']); ?>
+                    <?= $this->Html->Link('Users', array('controller' => 'Users','action' => 'index')); ?>
                     <?= $this->Html->Link('Categories', array('controller' => 'Categories','action' => 'index')); ?>
                     <?php echo $this->Html->Link('Blog Posts', ['controller' => 'Blog_posts','action' => 'index']); ?>
                     <?php echo $this->Html->Link('Meta Fields', ['controller' => 'Meta_fields','action' => 'index']); ?>
-                    <a href="/login">Login</a>
-                    <?php echo $this->Html->Link('Register', ['controller' => 'Users','action' => 'add']); ?>
+                    <?php echo $this->Html->Link('Logout', ['controller' => 'Users','action' => 'logout']); ?>
                 </div>
             </div>
         </nav>

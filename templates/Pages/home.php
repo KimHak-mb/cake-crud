@@ -4,7 +4,7 @@
  */
 ?>
 
-<!-- <div class="container">
+<div class="container">
     <div class="content">
         <div class="text-center">
             <h1>
@@ -16,4 +16,4 @@
         </div>
         
     </div>
-</div> -->
+</div>
