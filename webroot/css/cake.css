@@ -32,18 +32,19 @@ a:active  {
     transition:all 0.2s ease-out;
 } */
 
-/* .side-nav a,
+.side-nav a,
 .top-nav-links a,
 th a,
 .actions a {
     color: #606c76;
-} */
+}
 
 .side-nav a:hover,
 .side-nav a:focus,
 .actions a:hover,
 .actions a:focus {
-    color:#2f85ae;
+    color:#000000;
+    font-weight: bold;
 }
 
 /* Utility */

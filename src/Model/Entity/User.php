@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property \Cake\I18n\FrozenTime|null $created
  * @property \Cake\I18n\FrozenTime|null $modified
+ * @property string $image
  *
  * @property \App\Model\Entity\Article[] $articles
  */
@@ -32,6 +33,8 @@ class User extends Entity
         'password' => true,
         'created' => true,
         'modified' => true,
+        'image' => true,
+        'status' => true,
         'articles' => true,
     ];
 
