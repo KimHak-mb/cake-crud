@@ -6,7 +6,13 @@
 ?>
 <div class="users index content">
     <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Users') ?></h3>
+    <h1><?= __('Users') ?></h1>
+
+    <?= $this->Form->create(null,['type'=>'get'])?>
+    <?= $this->Form->control('key',['label'=>'Search Email','value'=>$this->request->getQuery('key')])?>
+    <?= $this->Form->submit()?>
+    <?= $this->Form->end()?>
+
     <div class="table-responsive">
         <table>
             <thead>

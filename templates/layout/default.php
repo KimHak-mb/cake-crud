@@ -53,6 +53,9 @@
     <?= $this->fetch('script') ?>
 </head> 
 <div class="wrapper">
+    <?php
+        $controller_name = $this->request->getParam('controller');
+    ?>
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -62,23 +65,26 @@
         </div>
 
         <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#">Home</a>
+            <li class=<?= $controller_name == 'Pages'?'bg-warning':'' ?>>
+                <a href="<?= $this->Url->build('/home') ?>">Home</a>
+            </li>
+            <li class=<?= $controller_name == 'Users'?'bg-warning':'' ?>>
+                <a href="<?= $this->Url->build('/users') ?>">Users</a>
+            </li>
+            <li class=<?= $controller_name == 'Categories'?'bg-warning':'' ?>>
+                <a href="<?= $this->Url->build('/categories') ?>">Categories</a>
+            </li>
+            <li class=<?= $controller_name == 'BlogPosts'?'bg-warning':'' ?>>
+                <a href="<?= $this->Url->build('/Blog_Posts') ?>">Blog Posts</a>
+            </li>
+            <li class=<?= $controller_name == 'MetaFields'?'bg-warning':'' ?>>
+                <a href="<?= $this->Url->build('/Meta Fields') ?>">Meta Fields</a>
             </li>
             <li>
-                <a href="#">Categories</a>
+                <a href="<?= $this->Url->build('/logout') ?>">Logout</a>
             </li>
             <li>
-                <a href="#">Blog Posts</a>
-            </li>
-            <li>
-                <a href="#">Meta Fields</a>
-            </li>
-            <li>
-                <a href="#">Login</a>
-            </li>
-            <li>
-                <a href="#">Register</a>
+                <a href="<?= $this->Url->build('/register') ?>">Register</a>
             </li>
         </ul>
     </nav>
@@ -91,13 +97,24 @@
                     <span>Toggle Sidebar</span>
                 </button>
 
-                <div class="top-nav-links">
-                    <?php echo $this->Html->Link('Home', ['controller' => 'Pages','action' => 'home']); ?>
-                    <?= $this->Html->Link('Users', array('controller' => 'Users','action' => 'index')); ?>
-                    <?= $this->Html->Link('Categories', array('controller' => 'Categories','action' => 'index')); ?>
-                    <?php echo $this->Html->Link('Blog Posts', ['controller' => 'Blog_posts','action' => 'index']); ?>
-                    <?php echo $this->Html->Link('Meta Fields', ['controller' => 'Meta_fields','action' => 'index']); ?>
+                <div class="top-nav-links list-unstyled">
+                    <li class=<?= $controller_name == 'Pages'?'bg-warning':'' ?>>
+                        <a><?php echo $this->Html->Link('Home', ['controller' => 'Pages','action' => 'home']); ?></a>
+                    </li>
+                    <li class=<?= $controller_name == 'Users'?'bg-warning':'' ?>>
+                        <a><?= $this->Html->Link('Users', array('controller' => 'Users','action' => 'index')); ?></a>
+                    </li>
+                    <li class=<?= $controller_name == 'Categories'?'bg-warning':'' ?>>
+                        <a><?= $this->Html->Link('Categories', array('controller' => 'Categories','action' => 'index')); ?></a>
+                    </li>
+                    <li class=<?= $controller_name == 'BlogPosts'?'bg-warning':'' ?>>
+                        <a><?php echo $this->Html->Link('Blog Posts', ['controller' => 'Blog_posts','action' => 'index']); ?></a>
+                    </li>
+                    <li class=<?= $controller_name == 'MetaFields'?'bg-warning':'' ?>>
+                        <a><?php echo $this->Html->Link('Meta Fields', ['controller' => 'Meta_fields','action' => 'index']); ?></a>
+                    </li>  
                     <?php echo $this->Html->Link('Logout', ['controller' => 'Users','action' => 'logout']); ?>
+                    <?php echo $this->Html->Link('Register', ['controller' => 'Users','action' => 'register']); ?>
                 </div>
             </div>
         </nav>
