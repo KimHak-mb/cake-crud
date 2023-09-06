@@ -147,11 +147,30 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, [
-            'contain' => [],
-        ]);
+        $user = $this->Users->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            if(!$user->getErrors){
+                $image = $this->request->getData('change_image');
+                $name = $image->getClientFilename();
+                
+                if($name){
+                    if(!is_dir(WWW_ROOT.'img'.DS.'user_img'))
+                        mkdir(WWW_ROOT.'img'.DS.'user_img',0775);
+                    $targetPath = WWW_ROOT.'img'.DS.'user_img'.DS.$name;
+                    
+                    $image->moveTo($targetPath);
+
+                    $imgpath = WWW_ROOT.'img'.DS.$user->image;
+                    if(file_exists($imgpath)){
+                        unlink($imgpath);
+                    }
+
+                    $user->image = 'user_img/'.$name;
+                }   
+            }
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
