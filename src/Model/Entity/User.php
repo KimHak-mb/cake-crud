@@ -35,6 +35,7 @@ class User extends Entity
         'modified' => true,
         'image' => true,
         'status' => true,
+        'profile' => true,
         'articles' => true,
     ];
 
