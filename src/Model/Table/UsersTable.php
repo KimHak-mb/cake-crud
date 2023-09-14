@@ -74,6 +74,9 @@ class UsersTable extends Table
             ->notEmptyString('password');
 
         $validator
+            ->sameAs('retype_password','password','Password match failed!');
+
+        $validator
             ->allowEmptyFile('image')
             ->add( 'image', [
             'mimeType' => [
