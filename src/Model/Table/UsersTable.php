@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Users Model
  *
  * @property \App\Model\Table\ArticlesTable&\Cake\ORM\Association\HasMany $Articles
+ * @property \App\Model\Table\ProfilesTable&\Cake\ORM\Association\HasMany $Profiles
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -52,6 +53,12 @@ class UsersTable extends Table
         $this->hasMany('Articles', [
             'foreignKey' => 'user_id',
         ]);
+        $this->hasMany('Profiles', [
+            'foreignKey' => 'user_id',
+        ]);
+        $this->hasMany('UserLogs', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**
@@ -74,20 +81,18 @@ class UsersTable extends Table
             ->notEmptyString('password');
 
         $validator
-            ->sameAs('retype_password','password','Password match failed!');
+            ->scalar('image')
+            ->maxLength('image', 255)
+            ->requirePresence('image', 'create')
+            ->notEmptyFile('image');
 
         $validator
-            ->allowEmptyFile('image')
-            ->add( 'image', [
-            'mimeType' => [
-                'rule' => [ 'mimeType', [ 'image/jpg', 'image/png', 'image/jpeg' ] ],
-                'message' => 'Please upload only jpg and png.',
-            ],
-            'fileSize' => [
-                'rule' => [ 'fileSize', '<=', '1MB' ],
-                'message' => 'Image file size must be less than 1MB.',
-            ],
-        ] );
+            ->notEmptyString('status');
+
+        $validator
+            ->scalar('birthyear')
+            ->requirePresence('birthyear', 'create')
+            ->notEmptyString('birthyear');
 
         return $validator;
     }

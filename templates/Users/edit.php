@@ -24,6 +24,8 @@
                 <?php
                     echo $this->Form->control('email');
                     echo $this->Form->control('change_image',['type'=>'file']);
+                    echo $this->Form->control('status');
+                    echo $this->Form->control('birthyear');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

@@ -22,9 +22,14 @@
                     echo $this->Form->control('retype_password', ['type'=>'password']);
                     echo $this->Form->control('profile.mobile');
                     echo $this->Form->control('image_file',['type'=>'file']);
+                    echo $this->Form->year('yr',[
+                        'min' => date('Y')-5,
+                        'max' => date('Y'),
+                        'empty' => false,
+                    ]);
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'),['class'=>'mt-4']) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

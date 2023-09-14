@@ -60,13 +60,7 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $key = $this->request->getQuery('key'); 
-        if($key){
-            $query = $this->Users->find('all')->where(['email like'=>'%'.$key.'%']);
-        }else{
-            $query = $this->Users;
-        }
-        $users = $this->paginate($query,['contain'=>['Profiles']]);
+        $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
     }
@@ -81,7 +75,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Articles'],
+            'contain' => ['Profiles', 'Articles'],
         ]);
 
         $this->set(compact('user'));
@@ -151,7 +145,9 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id);
+        $user = $this->Users->get($id, [
+            'contain' => [],
+        ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
 

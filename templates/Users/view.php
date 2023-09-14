@@ -27,8 +27,20 @@
                     <td><?= h($user->image) ?></td>
                 </tr>
                 <tr>
+                    <th><?= __('Birthyear') ?></th>
+                    <td><?= h($user->birthyear) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Profile') ?></th>
+                    <td><?= $user->has('profile') ? $this->Html->link($user->profile->id, ['controller' => 'Profiles', 'action' => 'view', $user->profile->id]) : '' ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($user->id) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Status') ?></th>
+                    <td><?= $this->Number->format($user->status) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>

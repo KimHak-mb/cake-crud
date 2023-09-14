@@ -28,6 +28,7 @@
                         <th><?= $this->Paginator->sort('modified') ?></th>
                         <th><?= $this->Paginator->sort('image') ?></th>
                         <th><?= $this->Paginator->sort('Change Status') ?></th>
+                        <th><?= $this->Paginator->sort('birthyear') ?></th>
                         <th class="actions"><?= __('Actions') ?></th>
                     </tr>
                 </thead>
@@ -48,10 +49,11 @@
                                 <?= $this->Form->postLink(__('Active'), ['action' => 'userStatus', $user->id,$user->status], ['block'=>true, 'confirm' => __('Are you sure you want to  inactive # {0}?', $user->id)]) ?>
                             <?php endif; ?>
                         </td>
+                        <td><?= h($user->birthyear) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['block'=>true, 'confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>
