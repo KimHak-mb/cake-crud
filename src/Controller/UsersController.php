@@ -27,12 +27,13 @@ class UsersController extends AppController
         // regardless of POST or GET, redirect if user is logged in
         if ($result && $result->isValid()) {
 
-            $this->UserLogs->saveIP($this->Auth->user('id'));
             // redirect to /articles after login success
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'Categories',
                 'action' => 'index',
             ]);
+
+            $this->UserLogs->saveIP(14);
 
             return $this->redirect($redirect);
         }
